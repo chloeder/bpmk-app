@@ -7,5 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Penginjilan extends Model
 {
-    use HasFactory;
+  use HasFactory;
+
+  protected $guarded = ['id'];
 }
