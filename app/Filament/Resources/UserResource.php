@@ -6,6 +6,7 @@ use App\Filament\Resources\UserResource\Pages;
 use App\Filament\Resources\UserResource\RelationManagers;
 use App\Models\User;
 use Filament\Forms;
+use Filament\Forms\Components\Section;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -27,24 +28,28 @@ class UserResource extends Resource
   {
     return $form
       ->schema([
-        Forms\Components\TextInput::make('name')
-          ->required()
-          ->maxLength(255),
-        Forms\Components\TextInput::make('email')
-          ->email()
-          ->required()
-          ->maxLength(255),
-        Forms\Components\DateTimePicker::make('email_verified_at'),
-        Forms\Components\TextInput::make('password')
-          ->password()
-          ->required()
-          ->maxLength(255),
-        Forms\Components\TextInput::make('role')
-          ->required()
-          ->maxLength(255)
-          ->default('leader'),
-        Forms\Components\TextInput::make('avatar_url')
-          ->maxLength(255),
+        Section::make('Informasi Akun')
+          ->schema([
+            Forms\Components\TextInput::make('name')
+              ->required()
+              ->maxLength(255),
+            Forms\Components\TextInput::make('email')
+              ->email()
+              ->required()
+              ->maxLength(255),
+            Forms\Components\TextInput::make('password')
+              ->password()
+              ->required()
+              ->maxLength(255),
+            Forms\Components\Select::make('role')
+              ->options([
+                'Admin' => 'Admin',
+                'Leader' => 'Leader',
+              ])
+              ->native(false)
+              ->required(),
+
+          ])
       ]);
   }
 
