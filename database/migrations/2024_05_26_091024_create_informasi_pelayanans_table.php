@@ -13,8 +13,12 @@ return new class extends Migration
   {
     Schema::create('informasi_pelayanans', function (Blueprint $table) {
       $table->id();
+      $table->string('judul');
       $table->string('jenis_pelayanan');
       $table->string('deskripsi');
+      $table->string('tempat_pelayanan');
+      $table->string('nomor_telepon');
+      $table->string('tanggal_pelayanan');
       $table->string('image');
       $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
       $table->timestamps();

@@ -10,6 +10,7 @@ use Filament\Forms\Components\Section;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Actions\ActionGroup;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -27,16 +28,28 @@ class InformasiPelayananResource extends Resource
       ->schema([
         Section::make('Form Informasi Pelayanan')
           ->schema([
-            Forms\Components\Select::make('jenis_pelayanan')
-              ->options([
-                'Pelayanan 1' => 'Pelayanan 1',
-                'Pelayanan 2' => 'Pelayanan 2',
-              ])
-              ->native(false)
+            Forms\Components\TextInput::make('judul')
+              ->label('Judul')
               ->required(),
-            Forms\Components\Textarea::make('deskripsi')
+            Forms\Components\TextInput::make('jenis_pelayanan')
+              ->label('Jenis Pelayanan')
+              ->required(),
+            Forms\Components\TextArea::make('deskripsi')
               ->required()
               ->maxLength(255),
+            Forms\Components\TextInput::make('tempat_pelayanan')
+              ->label('Tempat')
+              ->required()
+              ->maxLength(255),
+            Forms\Components\TextInput::make('nomor_telepon')
+              ->label('Nomor Telepon')
+              ->prefix('+62')
+              ->tel()
+              ->required()
+              ->maxLength(255),
+            Forms\Components\DateTimePicker::make('tanggal_pelayanan')
+              ->label('Tanggal & Waktu')
+              ->required(),
             Forms\Components\FileUpload::make('image')
               ->image()
               ->required(),
@@ -54,9 +67,6 @@ class InformasiPelayananResource extends Resource
         Tables\Columns\TextColumn::make('deskripsi')
           ->label('Deskripsi')
           ->searchable(),
-        Tables\Columns\ImageColumn::make('image')
-          ->width(200)
-          ->label('Image'),
         Tables\Columns\TextColumn::make('user.name')
           ->label('Pembuat')
           ->numeric()
@@ -66,7 +76,10 @@ class InformasiPelayananResource extends Resource
         //
       ])
       ->actions([
-        Tables\Actions\EditAction::make(),
+        ActionGroup::make([
+          Tables\Actions\EditAction::make(),
+          Tables\Actions\DeleteAction::make(),
+        ])
       ])
       ->bulkActions([
         Tables\Actions\BulkActionGroup::make([
