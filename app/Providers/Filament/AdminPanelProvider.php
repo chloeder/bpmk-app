@@ -29,6 +29,10 @@ class AdminPanelProvider extends PanelProvider
       ->path('admin')
       ->login()
       ->registration()
+      ->brandLogo(asset('img/bpmk.png'))
+      ->brandLogoHeight('3rem')
+      ->favicon(asset('img/bpmk.png'))
+      ->font('Poppins')
       ->colors([
         'primary' => Color::Amber,
       ])
