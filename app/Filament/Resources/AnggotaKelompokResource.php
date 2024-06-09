@@ -21,6 +21,7 @@ class AnggotaKelompokResource extends Resource
   protected static ?string $navigationLabel = 'List Anggota Kelompok';
   protected static ?string $modelLabel = 'List Anggota Kelompok';
   protected static ?int $navigationSort = 3;
+  protected static bool $shouldRegisterNavigation = false;
   protected static ?string $navigationIcon = 'heroicon-o-user-group';
 
   public static function form(Form $form): Form

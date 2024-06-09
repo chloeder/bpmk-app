@@ -115,7 +115,6 @@ class KelompokKecilResource extends Resource
         ActionGroup::make([
           Tables\Actions\EditAction::make(),
           Tables\Actions\DeleteAction::make(),
-
         ])
       ])
       ->bulkActions([]);

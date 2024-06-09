@@ -6,23 +6,19 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class AnggotaKelompok extends Model
+class Anggota extends Model
 {
   use HasFactory;
 
   protected $guarded = ['id'];
 
   /**
-   * Get the kelompok_kecil that owns the AnggotaKelompok
+   * Get the jurusan that owns the Anggota
    *
    * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
    */
-  public function kelompok_kecil(): BelongsTo
+  public function jurusan(): BelongsTo
   {
-    return $this->belongsTo(KelompokKecil::class);
-  }
-  public function anggota(): BelongsTo
-  {
-    return $this->belongsTo(Anggota::class);
+    return $this->belongsTo(Jurusan::class);
   }
 }

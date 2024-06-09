@@ -19,19 +19,12 @@ class AnggotaKelompokRelationManager extends RelationManager
   {
     return $form
       ->schema([
-        Forms\Components\TextInput::make('nama_anggota')
-          ->required()
-          ->maxLength(255),
-        Forms\Components\Select::make('jenis_kelamin')
-          ->required()
-          ->options([
-            'Laki-laki' => 'Laki-laki',
-            'Perempuan' => 'Perempuan',
-          ])->native(false),
-        Forms\Components\TextInput::make('jurusan')
-          ->required()
-          ->maxLength(255),
-        Forms\Components\Radio::make('bahan')
+        Forms\Components\Select::make('anggota_id')
+          ->label('Nama Anggota')
+          ->searchable()
+          ->preload()
+          ->relationship('anggota', 'nama_anggota'),
+        Forms\Components\Radio::make('literatur')
           ->options([
             'PHB' => 'PHB',
             'MHB' => 'MHB',
@@ -67,20 +60,28 @@ class AnggotaKelompokRelationManager extends RelationManager
         Tables\Columns\TextColumn::make('no')
           ->label('No')
           ->rowIndex(),
-        Tables\Columns\TextColumn::make('nama_anggota')
+        Tables\Columns\TextColumn::make('anggota.nama_anggota')
           ->label('Nama Anggota')
           ->searchable()
           ->sortable(),
-        Tables\Columns\TextColumn::make('jenis_kelamin')
+        Tables\Columns\TextColumn::make('anggota.jenis_kelamin')
           ->label('Jenis Kelamin')
           ->searchable()
           ->sortable(),
-        Tables\Columns\TextColumn::make('jurusan')
-          ->label('Jurusan')
+        Tables\Columns\TextColumn::make('anggota.jurusan.nama_jurusan')
+          ->label('Jenis Kelamin')
           ->searchable()
           ->sortable(),
-        Tables\Columns\TextColumn::make('bahan')
-          ->label('Bahan')
+        Tables\Columns\TextColumn::make('anggota.jurusan.fakultas')
+          ->label('Jenis Kelamin')
+          ->searchable()
+          ->sortable(),
+        Tables\Columns\TextColumn::make('anggota.angkatan')
+          ->label('Jenis Kelamin')
+          ->searchable()
+          ->sortable(),
+        Tables\Columns\TextColumn::make('literatur')
+          ->label('Literatur')
           ->searchable()
           ->sortable()
           ->badge()
