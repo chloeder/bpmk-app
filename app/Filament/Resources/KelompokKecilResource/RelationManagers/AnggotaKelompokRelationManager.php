@@ -69,15 +69,15 @@ class AnggotaKelompokRelationManager extends RelationManager
           ->searchable()
           ->sortable(),
         Tables\Columns\TextColumn::make('anggota.jurusan.nama_jurusan')
-          ->label('Jenis Kelamin')
+          ->label('Jurusan')
           ->searchable()
           ->sortable(),
         Tables\Columns\TextColumn::make('anggota.jurusan.fakultas')
-          ->label('Jenis Kelamin')
+          ->label('Fakultas')
           ->searchable()
           ->sortable(),
         Tables\Columns\TextColumn::make('anggota.angkatan')
-          ->label('Jenis Kelamin')
+          ->label('Angkatan')
           ->searchable()
           ->sortable(),
         Tables\Columns\TextColumn::make('literatur')

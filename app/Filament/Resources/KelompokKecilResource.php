@@ -27,6 +27,8 @@ class KelompokKecilResource extends Resource
 {
   protected static ?string $model = KelompokKecil::class;
   protected static ?string $navigationGroup = 'Pelayanan';
+  protected static ?string $navigationLabel = 'Kelompok Kecil';
+  protected static ?string $modelLabel = 'Kelompok Kecil';
   protected static ?int $navigationSort = 2;
   protected static ?string $navigationIcon = 'heroicon-o-users';
 

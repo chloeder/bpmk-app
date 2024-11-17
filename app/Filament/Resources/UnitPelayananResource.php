@@ -22,6 +22,9 @@ class UnitPelayananResource extends Resource
 {
   protected static ?string $model = UnitPelayanan::class;
   protected static ?string $navigationGroup = 'Pelayanan';
+  
+  protected static ?string $navigationLabel = 'Unit Pelayanan';
+  protected static ?string $modelLabel = 'Unit Pelayanan';
   protected static ?int $navigationSort = 1;
   protected static ?string $navigationIcon = 'heroicon-o-building-library';
 
